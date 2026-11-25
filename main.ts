@@ -6,8 +6,10 @@ import { join } from "node:path";
 // boring, unlucky one: the work laptop is physically trapped in a broken
 // lift, and maintenance won't open it until tomorrow. A tired manager has
 // heard every excuse twice, but who invents a laptop stuck in a lift?
+// The sting is the timing: tomorrow is the very night GTA 6 unlocks, so
+// the excuse is almost believable — and almost certainly a lie.
 const LINE =
-  "my work laptop's stuck in the lift and maintenance won't open it till tomorrow";
+  "my work laptop's stuck in the lift and maintenance won't open it till tomorrow, the night gta 6 unlocks";
 
 // Validate the sealed gate: 1-140 chars, at most 20 words, single line,
 // no control characters, and not only whitespace.
