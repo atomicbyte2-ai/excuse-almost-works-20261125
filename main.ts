@@ -23,6 +23,18 @@ if (LINE.includes("\n") || LINE.includes("\r")) {
 if (/[\u0000-\u001f\u007f]/.test(LINE)) {
   throw new Error("Line must not contain control characters");
 }
+// A hurried text has no leading or trailing whitespace, and the gate is
+// measured in characters while the leaderboard Size column is bytes, so
+// check both: the line must be identical after trimming and fit in 140
+// UTF-8 bytes as well as 140 characters.
+if (LINE !== LINE.trim()) {
+  throw new Error("Line must not have leading or trailing whitespace");
+}
+if (Buffer.byteLength(LINE, "utf8") > 140) {
+  throw new Error(
+    `Line must be at most 140 UTF-8 bytes, got ${Buffer.byteLength(LINE, "utf8")}`,
+  );
+}
 const words = LINE.trim().split(/\s+/);
 if (words.length > 20) {
   throw new Error(`Line must be at most 20 words, got ${words.length}`);
